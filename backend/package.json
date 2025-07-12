@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx index.ts"
+    "dev": "tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,11 +12,18 @@
   "description": "",
   "dependencies": {
     "@hono/node-server": "^1.15.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "hono": "^4.8.4",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.0.13",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
