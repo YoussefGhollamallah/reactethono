@@ -25,6 +25,6 @@ export const login = async (c: Context) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return c.text('Mot de passe incorrect', 401);
 
-    const token = generateToken({ id: user._id, email: user.email });
-    return c.json({ token });
+    const token = generateToken({ id: user._id,username: user.username, firstname: user.firstname, lastname: user.lastname, email: user.email });
+    return c.json({ token, user: { id: user._id, username: user.username, firstname: user.firstname, lastname: user.lastname, email: user.email }    });
 };
