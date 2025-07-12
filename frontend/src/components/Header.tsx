@@ -1,8 +1,8 @@
+import { useAuth } from '../context/AuthContext'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../hooks/useAuth'
 
 export default function Header() {
-    const { isAuthenticated, logout } = useAuth()
+    const { user, isAuthenticated, logout } = useAuth()
 
     return (
         <header>
@@ -10,6 +10,7 @@ export default function Header() {
             <Link to="/">Accueil</Link>{" | "}
             {isAuthenticated ? (
             <>
+                <span>Bonjour, {user?.firstname}</span>{" | "}
                 <Link to="/profile">Profil</Link>{" | "}
                 <button onClick={logout}>Déconnexion</button>
             </>

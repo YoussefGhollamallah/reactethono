@@ -1,23 +1,42 @@
-import axios from 'axios'
+import axios, { type AxiosResponse } from 'axios'
 
 const API = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}/auth`,
+  baseURL: `${import.meta.env.VITE_API_URL}/auth`,
 })
-
-export const register = (data: {
-    username: string
-    firstname: string
-    lastname: string
-    email: string
-    password: string
-}) => API.post('/register', data)
-
-export const login = (data: { email: string; password: string }) =>
-    API.post('/login', data)
 
 const authHeader = (token: string) => ({
   headers: { Authorization: `Bearer ${token}` },
 })
 
-export const getCurrentUser = (token: string) =>
-  API.get('/profile', authHeader(token))
+interface RegisterData {
+  username: string
+  firstname: string
+  lastname: string
+  email: string
+  password: string
+}
+
+interface LoginData {
+  email: string
+  password: string
+}
+
+export interface User {
+    id: string
+    username: string
+    firstname: string
+    lastname: string
+    email: string
+}
+
+export const register = (data: RegisterData) => API.post('/register', data)
+
+export const login = (data: LoginData) => API.post('/login', data)
+
+export const getCurrentUser = (token: string): Promise<AxiosResponse<User>> =>
+    API.get('/profile', authHeader(token))
+
+export const logout = () => {
+    localStorage.removeItem('token')
+    window.location.href = '/login'
+}
