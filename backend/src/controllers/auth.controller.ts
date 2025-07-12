@@ -4,13 +4,13 @@ import { generateToken } from '../utils/jwt';
 import bcrypt from 'bcryptjs';
 
 export const register = async (c: Context) => {
-    const { email, password } = await c.req.json();
+    const {username, firstname, lastname, email, password } = await c.req.json();
     const userExists = await User.findOne({ email });
 
     if (userExists) return c.text('Utilisateur déjà existant', 400);
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ email, password: hashedPassword });
+    const newUser = new User({ username, firstname, lastname, email, password: hashedPassword });
     await newUser.save();
 
     return c.text('Inscription réussie', 201);
