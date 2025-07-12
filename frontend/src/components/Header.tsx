@@ -6,11 +6,16 @@ export default function Header() {
 
     return (
         <header>
+            <p>
+
+            {isAuthenticated && <span>Bienvenue, {user?.username || 'Utilisateur'}</span>}
+            </p>
         <nav>
+            
+
             <Link to="/">Accueil</Link>{" | "}
             {isAuthenticated ? (
             <>
-                <span>Bonjour, {user?.firstname}</span>{" | "}
                 <Link to="/profile">Profil</Link>{" | "}
                 <button onClick={logout}>Déconnexion</button>
             </>

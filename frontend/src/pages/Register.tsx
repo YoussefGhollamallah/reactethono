@@ -26,14 +26,16 @@ export default function Register() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-        <h2>Inscription</h2>
-        <input name="username" placeholder="Nom d'utilisateur" onChange={handleChange} />
-        <input name="firstname" placeholder="Prénom" onChange={handleChange} />
-        <input name="lastname" placeholder="Nom" onChange={handleChange} />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} />
-        <input name="password" type="password" placeholder="Mot de passe" onChange={handleChange} />
-        <button type="submit">S'inscrire</button>
-        </form>
+        <main>
+            <form onSubmit={handleSubmit}>
+                <h2>Inscription</h2>
+                <input name="username" placeholder="Nom d'utilisateur" onChange={handleChange} />
+                <input name="firstname" placeholder="Prénom" onChange={handleChange} />
+                <input name="lastname" placeholder="Nom" onChange={handleChange} />
+                <input name="email" type="email" placeholder="Email" onChange={handleChange} />
+                <input name="password" type="password" placeholder="Mot de passe" onChange={handleChange} />
+                <button type="submit">S'inscrire</button>
+            </form>
+        </main>
     )
 }
