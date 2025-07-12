@@ -24,11 +24,14 @@ export default function Profile() {
     if (!user) return <p>Chargement...</p>
 
     return (
-        <div>
-        <h2>Mon profil</h2>
-        <p><strong>Nom :</strong> {user.firstname} {user.lastname}</p>
-        <p><strong>Nom d'utilisateur :</strong> {user.username}</p>
-        <p><strong>Email :</strong> {user.email}</p>
-        </div>
+        <main>
+            <div className="profile-header">
+
+            <h2>Mon profil</h2>
+            <p><strong>Nom :</strong> {user.firstname} {user.lastname}</p>
+            <p><strong>Nom d'utilisateur :</strong> {user.username}</p>
+            <p><strong>Email :</strong> {user.email}</p>
+            </div>
+        </main>
     )
 }

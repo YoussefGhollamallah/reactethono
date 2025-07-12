@@ -15,22 +15,24 @@ function AuthForm({ onSubmit, title }: Props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-        <h2>{title}</h2>
-        <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-            type="password"
-            placeholder="Mot de passe"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">{title}</button>
-        </form>
+        <main>
+            <form onSubmit={handleSubmit}>
+                <h2>{title}</h2>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Mot de passe"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+                <button type="submit">{title}</button>
+            </form>
+        </main>
     )
 }
 
