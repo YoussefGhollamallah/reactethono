@@ -7,15 +7,19 @@ import Home from './pages/Home'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="min-h-screen bg-custom-dark text-custom-light">
+      <BrowserRouter>
+        <Header />
+        <main className="min-h-[calc(100vh-80px)] flex justify-center items-center p-5">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </div>
   )
 }
 

@@ -1,102 +1,47 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+@import "tailwindcss";
+
+/* Couleurs personnalisées pour Tailwind v4 */
+@theme {
+  --color-custom-dark: #3d3a3a;
+  --color-custom-light: #e2dfdf;
+  --color-custom-header: #282c34;
+  --color-custom-accent: #4e0101;
 }
 
-body, html {
-  height: 100%;
-  background-color: #3d3a3a;
-  color: #e2dfdf;
+/* Styles personnalisés spécifiques */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
-/* Liens */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* En-tête */
-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Boutons */
-button {
-  background-color: #aadfee;
-  border: none;
-  padding: 10px 20px;
-  color: #282c34;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: #88c8f0;
-}
-
-/* Contenu principal centré */
-main {
-  min-height: calc(100vh - 80px); /* Ajuste avec la hauteur du header */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-/* Page accueil et profil */
-.page {
-  max-width: 600px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Titres */
-h1, h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-/* Formulaire */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: #4e0101;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-form input {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-form button {
-  align-self: center;
-  width: fit-content;
-}
-
-/* Articles ou blocs */
-article {
-  margin-bottom: 20px;
-}
-
-.profile-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: 
-  linear-gradient(to right, #4e0101, #282c34);
-  padding: 20px;
+@layer components {
+  .profile-header {
+    @apply flex flex-col gap-2.5 p-5;
+    background: linear-gradient(to right, #4e0101, #282c34);
+  }
+  
+  .page-container {
+    @apply max-w-2xl w-full text-center;
+  }
+  
+  .page-title {
+    @apply text-3xl font-bold mb-6 text-custom-light;
+  }
+  
+  .article-card {
+    @apply mb-5 p-4 bg-custom-header rounded-lg shadow-md;
+  }
 }
