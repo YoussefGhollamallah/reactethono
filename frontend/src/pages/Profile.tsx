@@ -25,12 +25,12 @@ export default function Profile() {
 
     return (
         <main>
-            <div className="profile-header">
+            <div className="profile-header text-light bg-red-500 p-5 rounded-lg">
 
-            <h2>Mon profil</h2>
-            <p><strong>Nom :</strong> {user.firstname} {user.lastname}</p>
-            <p><strong>Nom d'utilisateur :</strong> {user.username}</p>
-            <p><strong>Email :</strong> {user.email}</p>
+                <h2>Mon profil</h2>
+                <p><strong>Nom :</strong> {user.firstname} {user.lastname}</p>
+                <p><strong>Nom d'utilisateur :</strong> {user.username}</p>
+                <p><strong>Email :</strong> {user.email}</p>
             </div>
         </main>
     )

@@ -28,11 +28,7 @@
 }
 
 @layer components {
-  .profile-header {
-    @apply flex flex-col gap-2.5 p-5;
-    background: linear-gradient(to right, #4e0101, #282c34);
-  }
-  
+
   .page-container {
     @apply max-w-2xl w-full text-center;
   }
