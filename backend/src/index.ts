@@ -4,6 +4,7 @@ import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
 import { connectDB } from "./config/db";
 import authRoute from "./routes/auth.routes";
+import articleRoute from "./routes/article.routes";
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ app.use("*", cors({ origin: "http://localhost:5173" }));
 
 
 app.route("/auth/", authRoute);
-
+app.route("/articles/", articleRoute);
 
 app.get("/", (c) => {
     return c.text("API Blog fonctionnel");
