@@ -1,14 +1,8 @@
 import { Hono } from 'hono';
-import { register, login } from '../controllers/auth.controller';
+import { register, login, updateUserRole, getAllUsers } from '../controllers/auth.controller';
 import { authMiddleware } from '../middlewares/auth.middleware';
-
-type UserPayload = {
-    id: string;
-    username: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-};
+import { requireAdmin } from '../middlewares/role.middleware';
+import { UserPayload } from '../types/user.types';
 
 const authRoute = new Hono<{ Variables: { user: UserPayload } }>();
 
@@ -19,5 +13,9 @@ authRoute.get('/profile', authMiddleware, (c) => {
     const user = c.get('user') as UserPayload;
     return c.json(user);
 });
+
+// Routes administrateur uniquement
+authRoute.get('/users', authMiddleware, requireAdmin, getAllUsers);
+authRoute.put('/users/role', authMiddleware, requireAdmin, updateUserRole);
 
 export default authRoute;
