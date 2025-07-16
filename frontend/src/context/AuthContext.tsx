@@ -6,6 +6,9 @@ interface AuthContextType {
     isAuthenticated: boolean
     login: (email: string, password: string) => Promise<void>
     logout: () => void
+    hasRole: (role: string) => boolean
+    canCreateArticles: () => boolean
+    canEditArticle: (authorId: string) => boolean
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -51,8 +54,31 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     window.location.href = '/login'
   }
 
+  // ✅ Vérification des rôles
+  const hasRole = (role: string): boolean => {
+    return user?.role === role
+  }
+
+  // ✅ Peut créer des articles (auteur ou admin)
+  const canCreateArticles = (): boolean => {
+    return user?.role === 'auteur' || user?.role === 'admin'
+  }
+
+  // ✅ Peut modifier un article (auteur du contenu ou admin)
+  const canEditArticle = (authorId: string): boolean => {
+    return user?.id === authorId || user?.role === 'admin'
+  }
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      isAuthenticated, 
+      login, 
+      logout, 
+      hasRole, 
+      canCreateArticles, 
+      canEditArticle 
+    }}>
       {children}
     </AuthContext.Provider>
   )
