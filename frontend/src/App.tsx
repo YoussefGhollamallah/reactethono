@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
+import Articles from './pages/Articles'
+import CreateArticle from './pages/CreateArticle'
+import EditArticle from './pages/EditArticle'
 import Header from './components/Header'
 import Home from './pages/Home'
 
@@ -13,6 +16,9 @@ function App() {
         <main className="min-h-[calc(100vh-80px)] flex justify-center items-center p-5">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/create" element={<CreateArticle />} />
+            <Route path="/articles/edit/:id" element={<EditArticle />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
