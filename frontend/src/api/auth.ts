@@ -14,6 +14,7 @@ interface RegisterData {
   lastname: string
   email: string
   password: string
+  role?: string
 }
 
 interface LoginData {
@@ -27,6 +28,7 @@ export interface User {
     firstname: string
     lastname: string
     email: string
+    role: string
 }
 
 export const register = (data: RegisterData) => API.post('/register', data)
