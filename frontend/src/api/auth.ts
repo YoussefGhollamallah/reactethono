@@ -1,25 +1,24 @@
 import axios, { type AxiosResponse } from 'axios'
 
 const API = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/auth`,
+    baseURL: `${import.meta.env.VITE_API_URL}/auth`,
 })
 
 const authHeader = (token: string) => ({
-  headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${token}` },
 })
 
 interface RegisterData {
-  username: string
-  firstname: string
-  lastname: string
-  email: string
-  password: string
-  role?: string
-}
+    username: string
+    firstname: string
+    lastname: string
+    email: string
+    password: string
+    }
 
 interface LoginData {
-  email: string
-  password: string
+    email: string
+    password: string
 }
 
 export interface User {
@@ -28,7 +27,6 @@ export interface User {
     firstname: string
     lastname: string
     email: string
-    role: string
 }
 
 export const register = (data: RegisterData) => API.post('/register', data)
